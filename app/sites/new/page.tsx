@@ -15,7 +15,7 @@ export default function NewSitePage() {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState('')
 	const [role, setRole] = useState<string | null>(null)
-	const [checkingRole, setCheckingRole] = useState()
+	const [checkingRole, setCheckingRole] = useState(true)
 	const router = useRouter()
 	
 	
