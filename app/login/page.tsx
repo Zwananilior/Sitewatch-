@@ -27,7 +27,9 @@ export default function LoginPage() {
 	       <form onSubmit={ handleLogin } className="bg-white p-8 rounded shadow w-96">
 	         <h1 className="text-2xl font-bold mb-6">Site watch - Login</h1>
 			     { error && <p className="bg-red-50 text-red-700 text-sm p-2 rounded mb-3">{error}</p>}
-			     <input className="w-full border p-2 mb-4 rounded" placeholder="Password"
+			    <input className="w-full border p-2 mb-3 rounded" placeholder="Email" type="email" value={email} 
+  onChange={e => setEmail(e.target.value)} required/>
+			   <input className="w-full border p-2 mb-4 rounded" placeholder="Password"
 			      type="password" value={password} onChange={e =>setPassword(e.target.value)} 
 				      required/>
 					  <button disabled={loading} className="w-full bg-black text-white p-2 rounded">
