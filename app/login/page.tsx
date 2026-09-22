@@ -34,7 +34,7 @@ export default function LoginPage() {
 					  
 					  {loading ? 'Logging in...': 'Login'}
 					  </button>
-					     <p className="mt-4 text-sm">No account? <a href="/signup" className="underline">Sign up</a></p>
+					     <p className="mt-4 text-sm">No account? <a href="/Signup" className="underline">Sign up</a></p>
 						 
 						 
 						  
