@@ -64,10 +64,10 @@ export default function NewSitePage() {
 							 {error && <p className="bg-red-50 text-red-700 text-sm p-3 rounded mb-4"> {error}</p>}
 							 
 							 <label className="block text-sm font-medium mb-1">Site name</label>
-							 <input className="w-full border p-2 mb-3 rounded" value={name} onChange={e =>setName(e.tagert.value)}/>
+							 <input className="w-full border p-2 mb-3 rounded" value={name} onChange={e =>setName(e.target.value)}/>
 							 
 							 <label className="block text-sm font-medium mb-1">Location</label>
-							 <input className="w-full border p-2 mb-3 rounded" value={location} onChange={e =>setLocation(e.tagert.value)}/>
+							 <input className="w-full border p-2 mb-3 rounded" value={location} onChange={e =>setLocation(e.target.value)}/>
 							 
 							 <label className="block text-sm font-medium mb-1">Status</label>
 							 <select className="w-full border p-2 mb-4 rounded" value={status} onClick={e.setStatus(e.target.value)}>
