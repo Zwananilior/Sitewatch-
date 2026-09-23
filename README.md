@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🖥️ Site Watch
 
-## Getting Started
+A role-based site-monitoring dashboard built as a personal learning project,
+following a structured "Build → Break → Fix" software development brief.
+The app lets authenticated users monitor a set of physical or digital
+"sites," track sensor readings, and manage alerts — with strict
+admin-versus-viewer permissions enforced at the database level.
 
-First, run the development server:
+---
 
+## 📌 Overview
+
+| | |
+|---|---|
+| **Type** | Full-stack web application |
+| **Status** | In development |
+| **Purpose** | Practical learning project — authentication, role-based access control, and real-time data handling |
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js (App Router), React, Tailwind CSS |
+| Backend | Next.js API Routes |
+| Database & Auth | Supabase (PostgreSQL, Row-Level Security) |
+| Deployment | Vercel — auto-deploys on every push to `master` |
+
+---
+
+## ✨ Features
+
+- 🔐 **Authentication** — secure email/password signup and login via Supabase Auth
+- 🛡️ **Role-based access control** — `admin` and `viewer` roles, enforced through PostgreSQL Row-Level Security policies, not just hidden UI elements
+- 📊 **Dashboard** — real-time overview of all monitored sites and their current status
+- ⚙️ **Site management** — admins can create, edit, and delete monitored sites
+- 📈 **Readings log** — displays the most recent sensor readings per site
+- 🚨 **Alerts system** — admins can review and resolve active alerts
+- 📝 **Audit trail** — every alert resolution is automatically recorded in an append-only audit log for accountability
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository and install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/zwananilior/sitewatch.git
+cd sitewatch
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Set up Supabase
+Create a free project at [supabase.com](https://supabase.com).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+In the Supabase **SQL Editor**, run the schema file(s) included in this
+repository to create all required tables, roles, and Row-Level Security
+policies.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Configure environment variables
+Create a `.env.local` file in the project root:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-public-key
+```
+Both values are available in your Supabase project under **Settings → API**.
 
-## Learn More
+### 4. Run the development server
+```bash
+npm run dev
+```
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Create your first account
+Sign up through the app. New accounts default to the `viewer` role.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To test admin functionality, open the Supabase **Table Editor**, locate
+your row in the `profiles` table, and manually change `role` to `admin`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔒 Security Design
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Access control is enforced in the **database layer**, not just the
+frontend. Admin-only buttons in the UI are a convenience for the user —
+the real protection is PostgreSQL's Row-Level Security. Even a direct
+API call bypassing the interface would still be blocked from writing to
+`sites`, `alert_rules`, or resolving alerts unless the requesting user
+holds the `admin` role.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The `audit_log` table is **append-only by design** — no update or delete
+policy exists for it, ensuring resolved-alert records cannot be altered
+or removed after the fact.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Alert rules management UI (currently read-only)
+- [ ] Manual reading submission form, for testing alert thresholds
+- [ ] Pagination on the readings table (currently limited to 50 rows)
+- [ ] Replace native browser alerts with a proper toast notification system
