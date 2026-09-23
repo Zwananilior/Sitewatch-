@@ -1,4 +1,4 @@
-# 🖥️ Site Watch
+#  Site Watch
 
 A role-based site-monitoring dashboard built as a personal learning project,
 following a structured "Build → Break → Fix" software development brief.
@@ -8,9 +8,9 @@ admin-versus-viewer permissions enforced at the database level.
 
 ---
 
-## 📌 Overview
+##  Overview
 
-| | |
+
 |---|---|
 | **Type** | Full-stack web application |
 | **Status** | In development |
@@ -18,7 +18,7 @@ admin-versus-viewer permissions enforced at the database level.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -29,19 +29,19 @@ admin-versus-viewer permissions enforced at the database level.
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔐 **Authentication** — secure email/password signup and login via Supabase Auth
-- 🛡️ **Role-based access control** — `admin` and `viewer` roles, enforced through PostgreSQL Row-Level Security policies, not just hidden UI elements
-- 📊 **Dashboard** — real-time overview of all monitored sites and their current status
-- ⚙️ **Site management** — admins can create, edit, and delete monitored sites
-- 📈 **Readings log** — displays the most recent sensor readings per site
-- 🚨 **Alerts system** — admins can review and resolve active alerts
-- 📝 **Audit trail** — every alert resolution is automatically recorded in an append-only audit log for accountability
+- **Authentication** — secure email/password signup and login via Supabase Auth
+-  **Role-based access control** — `admin` and `viewer` roles, enforced through PostgreSQL Row-Level Security policies, not just hidden UI elements
+-  **Dashboard** — real-time overview of all monitored sites and their current status
+-  **Site management** — admins can create, edit, and delete monitored sites
+-  **Readings log** — displays the most recent sensor readings per site
+-  **Alerts system** — admins can review and resolve active alerts
+-  **Audit trail** — every alert resolution is automatically recorded in an append-only audit log for accountability
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repository and install dependencies
 ```bash
@@ -79,7 +79,7 @@ your row in the `profiles` table, and manually change `role` to `admin`.
 
 ---
 
-## 🔒 Security Design
+## Security Design
 
 Access control is enforced in the **database layer**, not just the
 frontend. Admin-only buttons in the UI are a convenience for the user —
@@ -94,7 +94,7 @@ or removed after the fact.
 
 ---
 
-## 🗺️ Roadmap
+##  Roadmap
 
 - [ ] Alert rules management UI (currently read-only)
 - [ ] Manual reading submission form, for testing alert thresholds
